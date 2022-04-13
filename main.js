@@ -1,9 +1,11 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const path = require('path')
+
 app.commandLine.appendSwitch('enable-logging', 'file')
 app.commandLine.appendSwitch('v', '1')
-app.commandLine.appendSwitch('log-file', 'D:/source/nodejs/electron-demo/out/electron_debug.log')
-const path = require('path')
+//app.commandLine.appendSwitch('log-file', './electron_debug.log') //Failed to add sandbox rule with pattern = '.\electron_debug.log'
+app.commandLine.appendSwitch('log-file', path.join(app.getAppPath(), 'electron_debug.log'))
 
 function createWindow () {
   // Create the browser window.
